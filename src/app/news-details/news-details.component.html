@@ -1,0 +1,18 @@
+<div class="news-detail-container">
+  <img [src]="news.urlToImage" />
+  <h1>{{ news.title }}</h1>
+  <h2>{{ news.author }}</h2>
+
+  <p>
+    {{
+      news.description +
+        news.content +
+        news.content +
+        news.description +
+        news.content
+    }}
+  </p>
+  <p>{{ news.description + news.content + news.content + news.description }}</p>
+  <p>{{ news.content + news.content + news.description }}</p>
+  <p>{{ news.content + news.content + news.description + news.description }}</p>
+</div>

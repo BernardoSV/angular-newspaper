@@ -1,0 +1,82 @@
+<div class="container news-component">
+  <main>
+    <div class="page-title">
+      <h1>
+        {{
+          searchKeyword === ""
+            ? "Exibindo as Principais Noticias do Momento"
+            : 'Exibindo resultados de busca por "' + searchKeyword + '"'
+        }}
+      </h1>
+      <h2>
+        Encontramos um total de
+        <strong>{{ news.totalResults }}</strong> resultados para a sua busca
+      </h2>
+    </div>
+
+    <div class="news-grid" *ngIf="news">
+      <article *ngFor="let teste of news.articles; let i = index">
+        <div class="news-image-container">
+          <img [src]="teste.urlToImage" alt="" srcset="" />
+        </div>
+        <div class="news-info">
+          <span class="news-source">by {{ teste.author }}</span>
+          <p class="news-title">{{ teste.title }}</p>
+          <p class="news-description">{{ teste.description }}</p>
+          <a [routerLink]="['news/', i]" (click)="shareNews()">Ler mais</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <aside class="side-bar">
+    <p>Categorias:</p>
+    <ul>
+      <li>
+        <button class="category-btn" (click)="findNews(1, 'Business')">
+          Business
+        </button>
+      </li>
+      <li>
+        <button class="category-btn" (click)="findNews(1, 'Entertainment')">
+          Entertainment
+        </button>
+      </li>
+      <li>
+        <button class="category-btn" (click)="findNews(1, 'General')">
+          General
+        </button>
+      </li>
+      <li>
+        <button class="category-btn" (click)="findNews(1, 'Health')">
+          Health
+        </button>
+      </li>
+      <li>
+        <button class="category-btn" (click)="findNews(1, 'Science')">
+          Science
+        </button>
+      </li>
+      <li>
+        <button class="category-btn" (click)="findNews(1, 'Sports')">
+          Sports
+        </button>
+      </li>
+      <li>
+        <button class="category-btn" (click)="findNews(1, 'Technology')">
+          Technology
+        </button>
+      </li>
+    </ul>
+
+    <p>Procurando alguma notícia?</p>
+    <input
+      type="text"
+      [(ngModel)]="searchKeyword"
+      placeholder="Pesquisar Por..."
+    />
+    <button class="search-btn" (click)="findNews(1, 'General', searchKeyword)">
+      Pesquisar
+    </button>
+  </aside>
+</div>
