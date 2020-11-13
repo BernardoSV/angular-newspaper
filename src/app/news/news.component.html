@@ -15,14 +15,14 @@
     </div>
 
     <div class="news-grid" *ngIf="news">
-      <article *ngFor="let teste of news.articles; let i = index">
+      <article *ngFor="let news of news.articles; let i = index">
         <div class="news-image-container">
-          <img [src]="teste.urlToImage" alt="" srcset="" />
+          <img [src]="news.urlToImage" alt="" srcset="" />
         </div>
         <div class="news-info">
-          <span class="news-source">by {{ teste.author }}</span>
-          <p class="news-title">{{ teste.title }}</p>
-          <p class="news-description">{{ teste.description }}</p>
+          <span class="news-source">by {{ news.author }}</span>
+          <p class="news-title">{{ news.title }}</p>
+          <p class="news-description">{{ news.description }}</p>
           <a [routerLink]="['news/', i]" (click)="shareNews()">Ler mais</a>
         </div>
       </article>
