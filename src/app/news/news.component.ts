@@ -11,6 +11,8 @@ export class NewsComponent implements OnInit {
   news: any;
 
   searchKeyword: string = '';
+  categoryUsed: string = null;
+  isKeywordTrue: boolean = false;
 
   constructor(
     private _http: HttpService,
@@ -25,16 +27,20 @@ export class NewsComponent implements OnInit {
     this._http.getNews(pageNumber, category, keywords).subscribe((data) => {
       this.news = data;
     });
+    this.categoryUsed = null;
+    this.isKeywordTrue = true;
   }
 
   findNewsByCategory(pageNumber: number, category: string) {
     this._http.getNews(pageNumber, category).subscribe((data) => {
       this.news = data;
     });
+    this.categoryUsed = category;
+    this.isKeywordTrue = false;
   }
 
   ngOnInit() {
     this.searchKeyword = '';
-    this.findNewsByCategory(1, 'general');
+    this.findNewsByCategory(1, 'General');
   }
 }

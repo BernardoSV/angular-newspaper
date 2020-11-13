@@ -3,9 +3,15 @@
     <div class="page-title">
       <h1>
         {{
-          searchKeyword === ""
-            ? "Exibindo as Principais Noticias do Momento"
-            : 'Exibindo resultados de busca por "' + searchKeyword + '"'
+          categoryUsed !== null
+            ? "Exibindo as Principais Noticias do Momento na categoria " +
+              categoryUsed
+            : ""
+        }}
+        {{
+          isKeywordTrue
+            ? "Exibindo resultado de busca por " + searchKeyword
+            : ""
         }}
       </h1>
       <h2>
@@ -33,37 +39,46 @@
     <p>Categorias:</p>
     <ul>
       <li>
-        <button class="category-btn" (click)="findNews(1, 'Business')">
+        <button
+          class="category-btn"
+          (click)="findNewsByCategory(1, 'Business')"
+        >
           Business
         </button>
       </li>
       <li>
-        <button class="category-btn" (click)="findNews(1, 'Entertainment')">
+        <button
+          class="category-btn"
+          (click)="findNewsByCategory(1, 'Entertainment')"
+        >
           Entertainment
         </button>
       </li>
       <li>
-        <button class="category-btn" (click)="findNews(1, 'General')">
+        <button class="category-btn" (click)="findNewsByCategory(1, 'General')">
           General
         </button>
       </li>
       <li>
-        <button class="category-btn" (click)="findNews(1, 'Health')">
+        <button class="category-btn" (click)="findNewsByCategory(1, 'Health')">
           Health
         </button>
       </li>
       <li>
-        <button class="category-btn" (click)="findNews(1, 'Science')">
+        <button class="category-btn" (click)="findNewsByCategory(1, 'Science')">
           Science
         </button>
       </li>
       <li>
-        <button class="category-btn" (click)="findNews(1, 'Sports')">
+        <button class="category-btn" (click)="findNewsByCategory(1, 'Sports')">
           Sports
         </button>
       </li>
       <li>
-        <button class="category-btn" (click)="findNews(1, 'Technology')">
+        <button
+          class="category-btn"
+          (click)="findNewsByCategory(1, 'Technology')"
+        >
           Technology
         </button>
       </li>
